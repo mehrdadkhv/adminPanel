@@ -1,10 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const middlewares = require('./middlewares/middlewares');
 const userRouter = require('./routes/userRoutes');
 
 const app = express();
+app.use(cors());
 
 // 1) MIDDLEWARES
 if (process.env.NODE_ENV === 'development') {
