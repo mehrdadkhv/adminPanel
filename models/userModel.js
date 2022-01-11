@@ -26,6 +26,7 @@ const userSchema = new mongoose.Schema({
     passwordconfrim: {
         type: String, 
         required: [true, 'لطفا رمز عبور خود را تایید کنید'],
+        select: false,
         validate: {
             // this only works on create and save !!
             validator: function (el) {
