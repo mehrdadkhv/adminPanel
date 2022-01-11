@@ -22,9 +22,9 @@ const userSchema = new mongoose.Schema({
         required: [true, 'لطفا یک پسورد معتبر وارد کنید'],
         minlength: 8,
         select: false
-    },
+    }, 
     passwordconfrim: {
-        type: String,
+        type: String, 
         required: [true, 'لطفا رمز عبور خود را تایید کنید'],
         validate: {
             // this only works on create and save !!
