@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
+const bcrypt =require('bcryptjs');
+
 
 
 const userSchema = new mongoose.Schema({
@@ -22,9 +24,9 @@ const userSchema = new mongoose.Schema({
         required: [true, 'لطفا یک پسورد معتبر وارد کنید'],
         minlength: 8,
         select: false
-    }, 
+    },
     passwordconfrim: {
-        type: String, 
+        type: String,
         required: [true, 'لطفا رمز عبور خود را تایید کنید'],
         select: false,
         validate: {
@@ -45,7 +47,32 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-const User = mongoose.model('users',userSchema);
+userSchema.methods.correctPassword = async function (
+    candidatePassword,
+    userPassword
+) {
+    return await bcrypt.compare(candidatePassword, userPassword);
+};
+ 
+userSchema.pre('save',async function(next){
+    //only run this function if password was actully modified
+
+    if(!this.isModified('password')){
+        return next()
+    }
+
+    // hash  the password with cost of 12
+    this.password = await bcrypt.hash(this.password,12);
+
+    //delete passwordconfrim field
+    this.passwordconfrim = undefined; 
+    next();
+  
+    
+})
+
+
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
 
