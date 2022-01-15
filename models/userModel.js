@@ -23,12 +23,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'لطفا یک پسورد معتبر وارد کنید'],
         minlength: 8,
-        select: false
+        select: true
     },
-    passwordconfrim: {
+    passwordconfirm: {
         type: String,
         required: [true, 'لطفا رمز عبور خود را تایید کنید'],
-        select: false,
+        select: true,
         validate: {
             // this only works on create and save !!
             validator: function (el) {
@@ -65,7 +65,7 @@ userSchema.pre('save',async function(next){
     this.password = await bcrypt.hash(this.password,12);
 
     //delete passwordconfrim field
-    this.passwordconfrim = undefined; 
+    this.passwordconfirm = undefined; 
     next();
   
     
