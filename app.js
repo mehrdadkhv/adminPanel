@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const middlewares = require('./middlewares/middlewares');
 const userRouter = require('./routes/userRoutes');
+const adminPanelRouter = require('./routes/admin/adminPanelRoutes');
 
 const app = express();
 app.use(cors());
@@ -27,8 +28,8 @@ app.use((req, res, next) => {
 });
 
 // 3) ROUTES
-
 app.use('/api/v1/users', userRouter); 
+app.use('/adminPanel', adminPanelRouter);
 
 app.use(middlewares.notFound)
 app.use(middlewares.errorHandler)
