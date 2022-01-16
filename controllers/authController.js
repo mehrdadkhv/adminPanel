@@ -84,30 +84,31 @@ exports.login = async (req, res, next) => {
 
 
 
-exports.protect = catchAsync(async (req, res, next) => {
+// exports.protect = catchAsync(async (req, res, next) => {
 
-    //1 getting token and check of its there
-    let token;
-    if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith('Bearer')
-    ) { 
-      token = req.headers.authorization.split(' ')[1];
-    }
+//     //1 getting token and check of its there
+//     let token;
+//     if (
+//       req.headers.authorization &&
+//       req.headers.authorization.startsWith('Bearer')
+//     ) { 
+//       token = req.headers.authorization.split(' ')[1];
+//     }
   
-    if (!token) {
-      return next(
-        new AppError('You are not logged in! Please log in to get access.', 401)
-      );
-    }
+//     if (!token) {
+//       return next(
+//         new AppError('You are not logged in! Please log in to get access.', 401)
+//       );
+//     }
   
-    // 2) Verification token
-    const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-    console.log(decoded);
+//     // 2) Verification token
+//     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+//      console.log(decoded);
+    
 
-    //3  check if user still exist 
+//     //3  check if user still exist 
   
-    // 4 check if user changed pass after the  token was issued
+//     // 4 check if user changed pass after the  token was issued
 
-    next()
-})
+//     next()
+// })

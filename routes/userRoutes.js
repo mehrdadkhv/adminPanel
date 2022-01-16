@@ -10,7 +10,7 @@ router.post('/login', authController.login);
 
 router
   .route('/')
-  .get(authController.protect,userController.getAllusers)
+  .get(userController.getAllusers)
   .post(userController.createUser);
 
 router
