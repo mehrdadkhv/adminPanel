@@ -11,12 +11,17 @@ router
 .route('/users')
 .get(userController.getAllusers)
 .post(userController.createUser);
-
 router
 .route('/user/:id')
 .get(userController.getUser)
 .patch(userController.updateUser)
 .delete(userController.deleteUser);
+
+//articles routes
+router
+    .route('/articles')
+    
+
 
 
 router.route('/').get(adminPanelController.index);
