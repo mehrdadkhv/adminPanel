@@ -1,6 +1,7 @@
 const express = require('express');
 const adminPanelController = require('../../controllers/admin/adminController')
 const userController = require('../../controllers/userController');
+const articleController = require('')
 
 const router = express.Router();
 
@@ -11,11 +12,7 @@ router
 .route('/users')
 .get(userController.getAllusers)
 .post(userController.createUser);
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 552e189660ed0c0b7d1f905821255eb0224d683b
 router
 .route('/user/:id')
 .get(userController.getUser)
@@ -25,7 +22,6 @@ router
 //articles routes
 router
     .route('/articles')
-    
 
 
 
