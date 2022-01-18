@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
  
 const articleSchema = new mongoose.Schema({
 
-    image: {
+    name: {
         type: String,
         default: [true, 'a article have a name']
     },
@@ -10,22 +10,15 @@ const articleSchema = new mongoose.Schema({
         type: String,
         default: [true, 'a article have a name']
     },
-    author: {
-        type: String,
-        default: [true, 'a article have a name']
-    },
-    date: {
-        type: String,
-        default: [true, 'a article have a name']
-    },
-    updated: {
-        type: String,
-        default: 'not updated'
-    },
     body: {
         type: String,
-        required: true
+        default: [true, 'a article have a name']
     },
+    summary :{
+        type: String,
+        default: [true, 'a article have a name']
+    }
+   
 
 })
 
