@@ -19,6 +19,11 @@ const articleSchema = new mongoose.Schema({
     summary :{
         type: String,
         default: [true, 'a article have a name']
+    },
+    images : [String],
+    secretArticle : {
+        type:Boolean,
+        default: false
     }
    
 
@@ -29,14 +34,19 @@ articleSchema.pre('save' , function(next) {
     this.slug = slugify(this.name,{lower: true })
     next()
 })
-articleSchema.pre('save', function(next) {
-    console.log('will save document...');
-    next();
-})
-articleSchema.post('save' , function(doc,next) {
-    console.log(doc);
-    next();
-})
+
+//  qury middleware
+// articleSchema.pre(/^find/, function(next) {
+//     this.find({secretArticle : {$ne : true}})
+
+//     this.start = Date.now();
+//     next();
+// })
+// articleSchema.post(/^find/,function(docs,next) {
+//     console.log(`Query took ${Date.now()-this.start} milliseconds`);
+//     console.log(docs);
+//     next();
+// })
 
 
 
