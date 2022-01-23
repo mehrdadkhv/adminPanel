@@ -30,6 +30,8 @@ app.use((req, res, next) => {
 app.use('/admin', adminPanelRouter);
 app.use('/signup', authController.signup);
 app.use('/login', authController.login);
+app.use('/forgotPassword', authController.forgotPassword);
+app.use('/resetPassword', authController.login);
 
 
 
